@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    background: #f6f6f6;
+}
+
+h1 {
+    text-align: center;
+}
+
+.gauge, .battery {
+    position: relative;
+    height: 20px;
+    background: #ddd;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.gauge-bar, .battery-level {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #ff1744;
+    border-radius: 10px;
+}
+
+.battery-level {
+    background: #4caf50;
+}
+
+.gauge-label, .battery-label {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
