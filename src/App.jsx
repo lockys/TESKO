@@ -1,48 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import liff from '@line/liff';
 import "./App.css";
 
-const LIFF_ID = import.meta.env.VITE_LIFF_ID;
-const STREAM_URL = import.meta.env.VITE_STREAM_URL;
+const TESLA_VIN = import.meta.env.VITE_TESLEMETRY_VIN;
+const TESLA_TOKEN = import.meta.env.VITE_TESLEMETRY_TOKEN;
+
+
+if (!TESLA_VIN || !TESLA_TOKEN) {
+  console.error('Tesla VIN or Token is undefined. Please check your environment variables.');
+}
+
+const STREAM_URL = `https://api.teslemetry.com/sse/${TESLA_VIN}?token=${TESLA_TOKEN}`;
 
 export default function App() {
-  const [ready, setReady] = useState(false);
   const [data, setData] = useState({});
 
   useEffect(() => {
-    async function init() {
-      try {
-        await liff.init({ liffId: LIFF_ID });
-        setReady(true);
-      } catch (err) {
-        console.error('LIFF init failed', err);
-      }
-    }
-    init();
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return;
     const es = new EventSource(STREAM_URL);
     es.onmessage = (event) => {
       try {
         const json = JSON.parse(event.data);
+        console.log(json);
+        
         setData(json);
       } catch (err) {
         console.error('Failed to parse SSE message', err);
       }
     };
+    es.onerror = (err) => {
+      console.error('SSE connection error', err);
+    };
     return () => es.close();
-  }, [ready]);
+  }, []);
 
   return (
     <div className="container">
       <h1>Tesla Telemetry</h1>
-      {ready ? (
-        <TelemetryDisplay data={data} />
-      ) : (
-        <p>Initializing LIFF...</p>
-      )}
+      <TelemetryDisplay data={data} />
     </div>
   );
 }
