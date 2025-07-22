@@ -1,15 +1,47 @@
 import React, { useEffect, useState } from 'react';
+import ReloadPrompt from './ReloadPrompt';
+import BottomNav from './BottomNav';
+import { FadeIn, SlideIn, ScaleIn } from './AnimatedElements';
 import "./App.css";
 
 const TESLA_VIN = import.meta.env.VITE_TESLEMETRY_VIN;
 const TESLA_TOKEN = import.meta.env.VITE_TESLEMETRY_TOKEN;
-
 
 if (!TESLA_VIN || !TESLA_TOKEN) {
   console.error('Tesla VIN or Token is undefined. Please check your environment variables.');
 }
 
 const STREAM_URL = `https://api.teslemetry.com/sse/${TESLA_VIN}?token=${TESLA_TOKEN}`;
+
+function TelemetryCard({ label, value }) {
+  return (
+    <div className="telemetry-card">
+      <div className="label">{label}</div>
+      <div className="value">{value}</div>
+    </div>
+  );
+}
+
+function TelemetryDisplay({ data }) {
+  const { speed, soc, odometr, gear } = data;
+
+  const telemetryItems = [
+    { label: "Speed", value: `${speed || 0} mph` },
+    { label: "State of Charge", value: `${soc || 0}%` },
+    { label: "Odometer", value: `${Math.round(odometr || 0)} mi` },
+    { label: "Gear", value: gear || 'P' },
+  ];
+
+  return (
+    <div className="telemetry-grid">
+      {telemetryItems.map((item, index) => (
+        <SlideIn key={item.label} delay={index * 0.1} from="bottom">
+          <TelemetryCard label={item.label} value={item.value} />
+        </SlideIn>
+      ))}
+    </div>
+  );
+}
 
 export default function App() {
   const [data, setData] = useState({});
@@ -19,9 +51,7 @@ export default function App() {
     es.onmessage = (event) => {
       try {
         const json = JSON.parse(event.data);
-        console.log(json);
-        
-        setData(json);
+        setData(prevData => ({ ...prevData, ...json }));
       } catch (err) {
         console.error('Failed to parse SSE message', err);
       }
@@ -33,27 +63,16 @@ export default function App() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Tesla Telemetry</h1>
-      <TelemetryDisplay data={data} />
-    </div>
+    <>
+      <header>
+        <h1>Tesla Telemetry</h1>
+      </header>
+      <main className="container">
+        <TelemetryDisplay data={data} />
+      </main>
+      <BottomNav />
+      <ReloadPrompt />
+    </>
   );
 }
 
-function TelemetryDisplay({ data }) {
-  const speed = data.speed ?? 0;
-  const battery = data.battery ?? 0;
-
-  return (
-    <div className="telemetry">
-      <div className="gauge">
-        <div className="needle" style={{ transform: `rotate(${speed * 1.8}deg)` }} />
-        <div className="center">{speed} km/h</div>
-      </div>
-      <div className="battery">
-        <div className="level" style={{ width: `${battery}%` }} />
-        <span>{battery}%</span>
-      </div>
-    </div>
-  );
-}
