@@ -1,0 +1,63 @@
+.container {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 1rem;
+}
+
+.telemetry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gauge {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background: #eee;
+  border-radius: 100px 100px 0 0;
+  overflow: hidden;
+}
+
+.needle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: red;
+  transform-origin: bottom;
+  transition: transform 0.2s linear;
+}
+
+.center {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.battery {
+  width: 200px;
+  height: 30px;
+  border: 2px solid #333;
+  position: relative;
+}
+
+.battery::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: -6px;
+  width: 6px;
+  height: 16px;
+  background: #333;
+}
+
+.level {
+  height: 100%;
+  background: limegreen;
+  transition: width 0.2s linear;
+}
