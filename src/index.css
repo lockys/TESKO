@@ -53,9 +53,10 @@
 }
 
 body {
-  /* Set a light background and dark text to harmonise with the Japanese minimal style */
-  background-color: #ffffff;
+  /* Apply gradient background and custom font for a more polished feel */
+  background: linear-gradient(to bottom, #f9fafb, #ffffff);
   color: #1f2937; /* corresponds to tailwind's gray-800 */
+  font-family: 'Inter', sans-serif;
   margin: 0;
   min-height: 100vh;
   display: flex;

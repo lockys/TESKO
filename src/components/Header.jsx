@@ -5,13 +5,18 @@
  * from the public folder and tinted using CSS filters to match the
  * primary colour.
  */
+import logo from "../../public/pwa-192x192.png"
+
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 bg-card shadow-md flex items-center justify-between px-4 py-3">
-      <div className="flex items-center">
-        <span className="text-xl font-semibold text-primary">TESKO</span>
+    <header className="sticky top-0 z-10 backdrop-blur bg-card/80 border-b border-border shadow-md">
+      <div className="max-w-screen-md mx-auto flex items-center justify-between px-4 py-3">
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="TESKO logo" className="h-7 w-7" />
+          <span className="text-xl font-semibold text-primary">TESKO</span>
+        </div>
+        <div className="text-sm text-muted-foreground">Welcome!</div>
       </div>
-      <div className="text-sm text-muted-foreground">Welcome!</div>
     </header>
   )
 }
