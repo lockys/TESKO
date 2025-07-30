@@ -12,10 +12,8 @@ export default function Header() {
     <header className="sticky top-0 z-10 backdrop-blur bg-card/80 border-b border-border shadow-md">
       <div className="max-w-screen-md mx-auto flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
-          <img src={logo} alt="TESKO logo" className="h-7 w-7" />
           <span className="text-xl font-semibold text-primary">TESKO</span>
         </div>
-        <div className="text-sm text-muted-foreground">Welcome!</div>
       </div>
     </header>
   )
