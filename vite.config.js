@@ -25,6 +25,10 @@ export default defineConfig({
         theme_color: "#00C0BF",
         background_color: "#ffffff",
         display: "standalone",
+        orientation: 'portrait',
+        start_url: './?utm_source=homescreen',
+
+        scope: './',
         icons: [
           {
             src: "pwa-192x192.png",
@@ -44,6 +48,29 @@ export default defineConfig({
           },
         ],
       },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) => request.destination === 'document',
+            handler: 'NetworkFirst',
+            options: { cacheName: 'html-cache' }
+          },
+          {
+            urlPattern: ({ request }) =>
+              ['style', 'script', 'worker'].includes(request.destination),
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'asset-cache' }
+          },
+          {
+            urlPattern: ({ request }) => request.destination === 'image',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'image-cache',
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 }
+            }
+          }
+        ]
+      }
     }),
   ],
   resolve: {
