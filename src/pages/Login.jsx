@@ -7,8 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-import logo from '../../public/pwa-192x192.png'
-
 /**
  * Login page triggers Tesla OAuth2 PKCE authentication. It receives
  * a callback to notify the parent component once the user initiates
@@ -24,7 +22,7 @@ export default function Login({ onLogin }) {
       <Card className="max-w-md w-full">
         <CardHeader className="items-center text-center">
           <img
-            src={logo}
+            src="/pwa-192x192.png"
             alt="TESKO logo"
             className="h-12 w-12 mb-4"
           />

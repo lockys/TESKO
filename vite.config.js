@@ -16,8 +16,9 @@ export default defineConfig({
     // Configure the PWA plugin. This generates a service worker, caches assets
     // and injects a web manifest at build time.
     VitePWA({
-      registerType: "prompt",
       includeAssets: ["pwa-192x192.png", "pwa-512x512.png"],
+      registerType: 'autoUpdate',       // auto-register & update your SW
+      injectRegister: 'auto',           // inject <script> to register SW
       manifest: {
         name: "TESKO",
         short_name: "TESKO",
@@ -26,9 +27,8 @@ export default defineConfig({
         background_color: "#ffffff",
         display: "standalone",
         orientation: 'portrait',
-        start_url: './?utm_source=homescreen',
-
-        scope: './',
+        start_url: '/',
+        scope: '/',
         icons: [
           {
             src: "pwa-192x192.png",
