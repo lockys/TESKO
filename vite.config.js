@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename)
 // Vite configuration for TESKO
 // We integrate the PWA plugin to generate a service worker and manifest.
 export default defineConfig({
-  base: "/TESKO/",
+  base: "/tesko/",
 
   plugins: [
     react(),
