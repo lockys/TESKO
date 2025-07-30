@@ -12,7 +12,7 @@ export default function TabBar({ activeTab, setActiveTab }) {
   return (
     <nav
       /* Fixed positioning keeps the navigation accessible on mobile */
-      className="fixed bottom-0 left-0 right-0 z-10 w-full h-16 flex justify-around items-center bg-card/90 backdrop-blur shadow-lg"
+      className="fixed bottom-0 left-0 right-0 z-10 w-full h-16 flex justify-around items-center bg-card/90 border-t border-border backdrop-blur shadow-lg"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       data-testid="tabbar"
     >
@@ -32,8 +32,8 @@ export default function TabBar({ activeTab, setActiveTab }) {
               value={tab.key}
               className="flex flex-col items-center justify-center flex-1 h-full focus:outline-none transition-all duration-200 ease-in-out data-[state=on]:text-primary"
             >
-              <Icon size={24} />
-              <span className="text-xs mt-1">{tab.label}</span>
+              <Icon size={26} />
+              <span className="text-xs font-medium mt-1">{tab.label}</span>
             </ToggleGroupItem>
           )
         })}
