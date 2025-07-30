@@ -9,11 +9,6 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-10 bg-card shadow-md flex items-center justify-between px-4 py-3">
       <div className="flex items-center">
-        <img
-          src="/pwa-192x192.png"
-          alt="TESKO logo"
-          className="h-8 w-8 mr-2 rounded"
-        />
         <span className="text-xl font-semibold text-primary">TESKO</span>
       </div>
       <div className="text-sm text-muted-foreground">Welcome!</div>
