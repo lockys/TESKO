@@ -21,11 +21,6 @@ export default function Login({ onLogin }) {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
       <Card className="max-w-md w-full">
         <CardHeader className="items-center text-center">
-          <img
-            src="/pwa-192x192.png"
-            alt="TESKO logo"
-            className="h-12 w-12 mb-4"
-          />
           <CardTitle className="text-3xl font-bold text-primary">
             Welcome to TESKO
           </CardTitle>
