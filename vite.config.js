@@ -23,9 +23,9 @@ export default defineConfig({
 
       injectRegister: 'auto',
       strategies: 'generateSW',
-      id: "TESKO",
       "display_override": ["fullscreen", "minimal-ui"],
       manifest: {
+        id: "TESKO-APP",
         name: "TESKO",
         short_name: "TESKO",
         description: "Realtime dashboard and trip analysis for EV owners",
