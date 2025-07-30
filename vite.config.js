@@ -24,6 +24,7 @@ export default defineConfig({
       injectRegister: 'auto',
       strategies: 'generateSW',
       id: "TESKO",
+      "display_override": ["fullscreen", "minimal-ui"],
       manifest: {
         name: "TESKO",
         short_name: "TESKO",
@@ -52,6 +53,15 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
+          },
+        ],
+        screenshots: [
+          {
+            src: "lockys.github.io_TESKO_(iPhone 12 Pro).png",
+            sizes: "1170x2532",
+            type: "image/png",
+            form_factor: "narrow",
+            label: "Realtime dashboard and trip analysis for EV owners",
           },
         ],
       },
