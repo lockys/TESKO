@@ -11,7 +11,8 @@ export default function TabBar({ activeTab, setActiveTab }) {
 
   return (
     <nav
-      className="left-0 right-0 w-full h-16 flex justify-around items-center bg-card/90 backdrop-blur shadow-lg"
+      /* Fixed positioning keeps the navigation accessible on mobile */
+      className="fixed bottom-0 left-0 right-0 z-10 w-full h-16 flex justify-around items-center bg-card/90 backdrop-blur shadow-lg"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       data-testid="tabbar"
     >
