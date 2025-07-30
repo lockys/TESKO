@@ -16,9 +16,11 @@ export default defineConfig({
     // Configure the PWA plugin. This generates a service worker, caches assets
     // and injects a web manifest at build time.
     VitePWA({
-      includeAssets: ["pwa-192x192.png", "pwa-512x512.png"],
-      registerType: 'autoUpdate',       // auto-register & update your SW
-      injectRegister: 'auto',           // inject <script> to register SW
+      includeAssets: ["pwa-192x192.png", "pwa-512x512.png", "pwa-512x512-maskable.png"],
+      registerType: 'autoUpdate',
+      manifestFilename: 'manifest.webmanifest',
+      injectRegister: 'auto',
+      strategies: 'generateSW',
       manifest: {
         name: "TESKO",
         short_name: "TESKO",
@@ -34,17 +36,19 @@ export default defineConfig({
             src: "pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
+            purpose: "any",
           },
           {
             src: "pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
+            purpose: "any",
           },
           {
-            src: "pwa-512x512.png",
+            src: "pwa-512x512-maskable.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "maskable",
           },
         ],
       },
