@@ -19,8 +19,11 @@ export default defineConfig({
       includeAssets: ["pwa-192x192.png", "pwa-512x512.png", "pwa-512x512-maskable.png"],
       registerType: 'autoUpdate',
       manifestFilename: 'manifest.webmanifest',
+      description: "What PWA Can Do Today is a showcase of what is possible with Progressive Web Apps today.\n\nThe app is itself a Progressive Web App which means it can be installed to the home screen of your mobile device or to your desktop.",
+
       injectRegister: 'auto',
       strategies: 'generateSW',
+      id: "TESKO",
       manifest: {
         name: "TESKO",
         short_name: "TESKO",
@@ -29,7 +32,7 @@ export default defineConfig({
         background_color: "#ffffff",
         display: "standalone",
         orientation: 'portrait',
-        start_url: '/',
+        start_url: "/?source=pwa",
         scope: '/',
         icons: [
           {
