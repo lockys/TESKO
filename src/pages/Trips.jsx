@@ -16,7 +16,7 @@ export default function Trips() {
       <p className="text-muted-foreground">
         Your trips will appear here once you start driving.
       </p>
-      <ul className="mt-6 space-y-3">
+      <ul className="mt-6 space-y-3 list-none">
         {/* Example placeholder trips */}
         {[1, 2, 3].map((id) => (
           <li key={id}>

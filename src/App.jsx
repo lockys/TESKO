@@ -55,14 +55,16 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-white">
-      {/* Top header */}
-      {/* <Header /> */}
-       <Header />
-      {/* Content area: leave space at bottom for TabBar */}
-      <div className="flex-1 overflow-y-auto pb-24">{content}</div>
-      {/* Bottom navigation */}
+    <div className="relative min-h-screen bg-gray-50">
+      <div className="flex flex-col bg-gradient-to-br from-slate-50 to-white">
+        {/* Top header */}
+        <Header />
+        {/* Content area: leave space at bottom for TabBar */}
+        <div className="flex-1 overflow-y-auto pb-24">{content}</div>
+        {/* Bottom navigation */}
+      </div>            
       <TabBar activeTab={tab} setActiveTab={setTab} />
     </div>
+
   )
 }

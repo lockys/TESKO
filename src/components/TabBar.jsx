@@ -12,8 +12,9 @@ export default function TabBar({ activeTab, setActiveTab }) {
   return (
     <nav
       /* Fixed positioning keeps the navigation accessible on mobile */
+      /* Ensure bottom-0 is recognized by Tailwind */
       className="fixed bottom-0 left-0 right-0 z-10 w-full h-16 flex justify-around items-center bg-card/90 border-t border-border backdrop-blur shadow-lg"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      style={{ paddingBottom: "env(safe-area-inset-bottom)", bottom: 0 }}
       data-testid="tabbar"
     >
       <ToggleGroup
